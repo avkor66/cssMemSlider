@@ -2,14 +2,13 @@ html {
   font-size: 62.5%;
 }
 .wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 10vh auto;
 }
 .slider {
-  width: 70em;
-  height: 50em;
+  width: 40vw;
+  min-width: 70em;
+  height: 30vw;
+  min-height: 50em;
   margin: 0 auto;
   padding: 2em 3em;
   background-color: #2e2e2e;
@@ -23,6 +22,15 @@ html {
   display: flex;
   overflow: hidden;
   grid-area: A;
+}
+.slider_images_item {
+  transition: all 0.6s;
+}
+.slider_images_item > img {
+  height: 100%;
+  width: 40vw;
+  min-width: 70em;
+  border-radius: 4em;
 }
 .slider_description {
   width: 100%;
@@ -46,14 +54,6 @@ html {
   align-items: flex-start;
   justify-content: end;
 }
-.slider_images_item > img {
-  height: 100%;
-  width: 70em;
-  border-radius: 4em;
-}
-.slider_images_item {
-  transition: all 0.6s;
-}
 .lab {
   display: block;
   padding: 1em;
@@ -62,6 +62,14 @@ html {
   margin-top: -0.5em;
   cursor: pointer;
   transition: all 0.8s;
+}
+.lab:hover .lab_circle {
+  border-color: #fff;
+  background-color: #fff;
+}
+.lab:hover .lab_circle:active {
+  border-color: #fff;
+  background-color: #fff;
 }
 .lab_circle {
   height: 1.2em;
@@ -75,6 +83,7 @@ html {
   position: absolute;
   visibility: hidden;
 }
+
 #input_1:checked ~ .slider_description > .slider_shell {
   transform: translateX(0%);
 }
@@ -87,6 +96,7 @@ html {
 #input_4:checked ~ .slider_description > .slider_shell {
   transform: translateX(-75%);
 }
+
 #input_1:checked ~ .slider_images > .image_1 {
   margin-left: 0;
 }
@@ -99,42 +109,37 @@ html {
 #input_4:checked ~ .slider_images > .image_1 {
   margin-left: -300%;
 }
+
 #input_1:checked ~ .slider_navigation > .lab > .lab_circle_1 {
   border-color: #60a2ff;
   background-color: inherit;
-}
-#input_1:checked ~ .slider_navigation > .lab:hover > .lab_circle_1 {
-  border-color: #fff;
 }
 #input_2:checked ~ .slider_navigation > .lab > .lab_circle_2 {
   background-color: #60a2ff;
   background-color: inherit;
 }
-#input_2:checked ~ .slider_navigation > .lab:hover > .lab_circle_2 {
-  border-color: #fff;
-}
 #input_3:checked ~ .slider_navigation > .lab > .lab_circle_3 {
   background-color: #60a2ff;
   background-color: inherit;
-}
-#input_3:checked ~ .slider_navigation > .lab:hover > .lab_circle_3 {
-  border-color: #fff;
 }
 #input_4:checked ~ .slider_navigation > .lab > .lab_circle_4 {
   background-color: #60a2ff;
   background-color: inherit;
 }
+
+#input_1:checked ~ .slider_navigation > .lab:hover > .lab_circle_1 {
+  border-color: #fff;
+}
+#input_2:checked ~ .slider_navigation > .lab:hover > .lab_circle_2 {
+  border-color: #fff;
+}
+#input_3:checked ~ .slider_navigation > .lab:hover > .lab_circle_3 {
+  border-color: #fff;
+}
 #input_4:checked ~ .slider_navigation > .lab:hover > .lab_circle_4 {
   border-color: #fff;
 }
-.lab:hover .lab_circle {
-  border-color: #fff;
-  background-color: #fff;
-}
-.lab:hover .lab_circle:active {
-  border-color: #fff;
-  background-color: #fff;
-}
+
 #input_1:not(:checked) ~ .slider_navigation > .lab > .lab_circle_1:active {
   opacity: .3;
 }
@@ -146,4 +151,32 @@ html {
 }
 #input_4:not(:checked) ~ .slider_navigation > .lab > .lab_circle_4:active {
   opacity: .3;
+}
+
+@media only screen and (max-width: 611px) {
+  .slider {
+    width: 70vw;
+    min-width: auto;
+    min-height: 30em;
+    grid-template-areas:
+    "A A A A"
+    "C C C C"
+    "B B B B";
+  }
+  .slider_images_item > img {
+    width: 70vw;
+    min-width: auto;
+  }
+  .slider_navigation {
+    justify-content: center;
+  }
+  .slider_shell {
+    font-size: 1.5em;
+  }
+  .slider_description {
+    height: 7em;
+  }
+  .lab {
+    margin-top: 0;
+  }
 }
